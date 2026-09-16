@@ -109,8 +109,10 @@ client.on("messageCreate", async msg => {
     content = `[${msg.author.displayName}]: ` + content
     if (msg.channelId === "1224889071885881425") { // brook
 	content.replace("[", "[💧")
+	console.log("broo")
     } else if (msg.channelId === "1503871789737181384") { // tangerine
 	content.replace("[","[🍊")
+	console.log("tangerine")
     }
 
     if (msg.channelId === "1224889071885881425" && msg.author != client.user) {
