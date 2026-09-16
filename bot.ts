@@ -116,22 +116,22 @@ client.on("messageCreate", async msg => {
     if (msg.channelId === "1224889071885881425" && msg.author != client.user) {
         if (msg.attachments.at(0) != null) {
             ( client.channels.cache.get("1503871789737181384") as TextChannel).send({
-                content: `[${msg.author.displayName}]: ${content}`,
+                content: content,
                 files: [msg.attachments.at(0)?.url]
             })
             console.log("hee hee haw")
         } else {
-            ( client.channels.cache.get("1503871789737181384") as TextChannel).send("[" + msg.author.displayName + "]: " + content)
+            ( client.channels.cache.get("1503871789737181384") as TextChannel).send(content)
         }
     } else if (msg.channelId === "1503871789737181384" && msg.author != client.user) {
         if (msg.attachments.at(0) != null) {
             ( client.channels.cache.get("1224889071885881425") as TextChannel).send({
-                content: `[${msg.author.displayName}]: ${content}`,
+                content: content,
                 files: [msg.attachments.at(0).url]
             })
             console.log("hee hee haw")
         } else {
-        ( client.channels.cache.get("1224889071885881425") as TextChannel).send("[" + msg.author.displayName + "]: " + content)
+        ( client.channels.cache.get("1224889071885881425") as TextChannel).send(content)
         }
     }
 
