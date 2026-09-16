@@ -108,11 +108,29 @@ client.on("messageCreate", async msg => {
     content = content.replace(/epstein/g, "███████")
     content = `[${msg.author.displayName}]: ` + content
     if (msg.channelId === "1224889071885881425") { // brook
-	content.replace("[", "[💧")
+	content = content.replace(/\[/, "[💧")
 	console.log("broo")
     } else if (msg.channelId === "1503871789737181384") { // tangerine
-	content.replace("[","[🍊")
+	content = content.replace("[","[🍊")
 	console.log("tangerine")
+    }
+
+    if (msg.webhookId != null) {
+	content = content.replace("[", "[🪝")
+    } else if (msg.author.bot) {
+	content = content.replace("[", "[🤖")
+    }
+
+    if (msg.reference) {
+	let replied = (await msg.fetchReference())
+	let reply = replied.content
+	if (replied.author != client.user) {
+	    reply = `[${replied.author.displayName}]: ${reply}` 
+	} else if (reply.startsWith("-# ↗️ [")) {
+	    let regex = /^(-# ↗️ \[[^\]]+\]: .*\r?\n)+/;
+	    reply.replace(regex, "")
+	}
+	content = `-# ↗️ ${reply} \n` + content
     }
 
     if (msg.channelId === "1224889071885881425" && msg.author != client.user) {
@@ -137,4 +155,4 @@ client.on("messageCreate", async msg => {
         }
     }
 
-})
+})	
