@@ -106,6 +106,12 @@ client.on("messageCreate", async msg => {
     const args = msg.content.split(' ')
     let content = msg.content.trim()
     content = content.replace(/epstein/g, "███████")
+    content = `[${msg.author.displayName}]: ` + content
+    if (msg.channelId === "1224889071885881425") { // brook
+	content.replace("[", "[💧")
+    } else if (msg.channelId === "1503871789737181384") { // tangerine
+	content.replace("[","[🍊")
+    }
 
     if (msg.channelId === "1224889071885881425" && msg.author != client.user) {
         if (msg.attachments.at(0) != null) {
