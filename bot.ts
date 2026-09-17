@@ -126,11 +126,12 @@ client.on("messageCreate", async msg => {
 	let reply = replied.content
 	if (replied.author != client.user) {
 	    reply = `[${replied.author.displayName}]: ${reply}` 
-	} else if (reply.startsWith("-# ↗️ [")) {
-	    let regex = /^(-# ↗️ \[[^\]]+\]: .*\r?\n)+/;
+	} else if (reply.startsWith("-# > ↗️ [")) {
+		console.log("yes")
+	    let regex = /^(-# \> ↗️ \[[^\]]+\]: .*\r?\n)+/;
 	    reply.replace(regex, "")
 	}
-	content = `-# ↗️ ${reply} \n` + content
+	content = `-# >  ↗️ ${reply} \n` + content
     }
 
     if (msg.channelId === "1224889071885881425" && msg.author != client.user) {
